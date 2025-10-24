@@ -1,22 +1,19 @@
-package com.A3M.user.dto.user;
+package com.A3M.user.dto.user.response;
 
-import com.A3M.user.model.Coach;
 import com.A3M.user.model.User;
 import lombok.Data;
 
 @Data
-public class UserWithCoachDto {
+public class UserLightDto {
     private Long id;
     private String email;
     private String phoneNumber;
-    private Coach coach;
 
-    public static UserWithCoachDto from(User user) {
-        UserWithCoachDto userDto = new UserWithCoachDto();
+    public static UserLightDto from(User user) {
+        UserLightDto userDto = new UserLightDto();
         userDto.setId(user.getId());
         userDto.setEmail(user.getEmail());
         userDto.setPhoneNumber(user.getPhoneNumber());
-        userDto.setCoach(user.getCoach());
         return userDto;
     }
 }

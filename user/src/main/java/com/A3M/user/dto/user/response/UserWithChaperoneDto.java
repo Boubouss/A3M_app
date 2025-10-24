@@ -1,4 +1,4 @@
-package com.A3M.user.dto.user;
+package com.A3M.user.dto.user.response;
 
 import com.A3M.user.model.Chaperone;
 import com.A3M.user.model.User;

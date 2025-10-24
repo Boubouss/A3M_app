@@ -18,5 +18,5 @@ spring:
       value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
 
 jwt:
-  secret: ta_cle_secrete_jwt  # À remplacer par une clé sécurisée (ex: 256 bits)
-  expiration: 86400  # 24h en secondes
+  secret: peZE4oeaRGE68RGe7zg35jaO2Rk9gaERgz5TH124zef345spg23zEFp
+  expiration: 86400

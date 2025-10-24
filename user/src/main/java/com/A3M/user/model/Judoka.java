@@ -5,7 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import java.time.LocalDate;
-import com.A3M.user.enums.BeltLevel;
+import com.A3M.user.enums.EBelt;
 
 @Entity
 @Table(name = "judoka")
@@ -34,7 +34,7 @@ public class Judoka {
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    private BeltLevel beltLevel;
+    private EBelt beltLevel;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", nullable = false)

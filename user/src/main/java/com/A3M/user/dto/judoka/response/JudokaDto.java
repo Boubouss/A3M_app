@@ -1,6 +1,6 @@
-package com.A3M.user.dto.judoka;
+package com.A3M.user.dto.judoka.response;
 
-import com.A3M.user.dto.user.UserLightDto;
+import com.A3M.user.dto.user.response.UserLightDto;
 import com.A3M.user.model.Judoka;
 import lombok.Data;
 

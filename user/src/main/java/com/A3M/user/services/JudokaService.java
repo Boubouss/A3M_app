@@ -12,12 +12,5 @@ public class JudokaService {
     @Autowired
     private JudokaRepository repository;
 
-    // COACH
-    public List<Judoka> findAll() {
-        return repository.findAll();
-    }
 
-    public Judoka findById(Long id) {
-        return repository.findById(id).orElse(null);
-    }
 }

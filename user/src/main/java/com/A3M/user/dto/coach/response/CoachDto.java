@@ -1,7 +1,6 @@
-package com.A3M.user.dto.coach;
+package com.A3M.user.dto.coach.response;
 
-import com.A3M.user.dto.user.UserDto;
-import com.A3M.user.dto.user.UserLightDto;
+import com.A3M.user.dto.user.response.UserLightDto;
 import com.A3M.user.model.Coach;
 import lombok.Data;
 

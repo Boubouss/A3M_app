@@ -1,6 +1,6 @@
-package com.A3M.user.dto.chaperone;
+package com.A3M.user.dto.chaperone.response;
 
-import com.A3M.user.dto.user.UserLightDto;
+import com.A3M.user.dto.user.response.UserLightDto;
 import com.A3M.user.model.Chaperone;
 import lombok.Data;
 
