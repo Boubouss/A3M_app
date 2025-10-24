@@ -22,7 +22,7 @@ public class Coach {
     private String lastName;
 
     @Column(unique = true)
-    private Long coachLicenseId;
+    private Long licenseId;
 
     @OneToOne
     @JoinColumn(name = "user_id", nullable = false)

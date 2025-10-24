@@ -1,10 +1,12 @@
 package com.A3M.user.model;
 
+import com.A3M.user.enums.UserType;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import java.time.LocalDate;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "users")
@@ -20,7 +22,7 @@ public class User {
     private String email;
 
     @Column
-    private String phonenumber;
+    private String phoneNumber;
 
     @Column(nullable = false)
     private String password;
