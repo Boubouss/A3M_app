@@ -1,6 +1,5 @@
 package com.A3M.user.dto.user.response;
 
-import com.A3M.user.model.User;
 import lombok.Builder;
 import lombok.Data;
 

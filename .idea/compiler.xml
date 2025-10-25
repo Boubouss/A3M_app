@@ -3,7 +3,7 @@
   <component name="CompilerConfiguration">
     <annotationProcessing>
       <profile default="true" name="Default" enabled="true" />
-      <profile name="Annotation profile for notification" enabled="true">
+      <profile name="Annotation profile for user" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
@@ -12,8 +12,8 @@
         </processorPath>
         <module name="notification" />
         <module name="event" />
-        <module name="licences" />
         <module name="user" />
+        <module name="licences" />
         <module name="chat" />
         <module name="billing" />
       </profile>

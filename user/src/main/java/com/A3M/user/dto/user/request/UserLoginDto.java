@@ -7,7 +7,7 @@ import lombok.Data;
 public class UserLoginDto {
 
     @NotBlank(message = "Username is required.")
-    @Email(message = "Username must be valid.")
+    @Size(min = 4, max = 20, message = "Minimum 8 and maximum 20.")
     private String username;
 
     @NotBlank(message = "Password is required.")

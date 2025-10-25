@@ -7,7 +7,7 @@ import lombok.Data;
 public class UserRegistrationDto {
 
     @NotBlank(message = "Username is required.")
-    @Size(min = 8, max = 20, message = "Minimum 4 and maximum 20.")
+    @Size(min = 4, max = 20, message = "Minimum 4 and maximum 20.")
     private String username;
 
     @NotBlank(message = "Email is required.")

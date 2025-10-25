@@ -18,5 +18,5 @@ spring:
       value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
 
 jwt:
-  secret: peZE4oeaRGE68RGe7zg35jaO2Rk9gaERgz5TH124zef345spg23zEFp
+  secret: k7Xp2s5v8yzB3E5HgMbQeThWmZq4t7w2z4C3FxJaNdRgUkXp2r4u7xlAmDdG5KbPeShVmYq3s6v9y0BfE1HmMcQfTjWnZr4u7x7AtF
   expiration: 86400
