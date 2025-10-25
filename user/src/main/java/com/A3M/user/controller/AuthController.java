@@ -1,10 +1,8 @@
 package com.A3M.user.controller;
 
-import com.A3M.user.dto.user.response.UserDto;
 import com.A3M.user.dto.user.request.UserLoginDto;
 import com.A3M.user.dto.user.request.UserRegistrationDto;
 import com.A3M.user.dto.user.response.UserLoggedDto;
-import com.A3M.user.model.User;
 import com.A3M.user.services.AuthService;
 import jakarta.annotation.Resource;
 import jakarta.validation.Valid;
@@ -18,9 +16,8 @@ public class AuthController {
     private AuthService authService;
 
     @PostMapping("/register")
-    public ResponseEntity<UserDto> register(@Valid @RequestBody UserRegistrationDto dto) {
-        User user = authService.registerUser(dto);
-        return ResponseEntity.ok(UserDto.from(user));
+    public ResponseEntity<UserLoggedDto> register(@Valid @RequestBody UserRegistrationDto dto) {
+        return ResponseEntity.ok(authService.registerUser(dto));
     }
 
     @PostMapping("/login")

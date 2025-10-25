@@ -25,7 +25,7 @@ public class AuthService {
     private final AuthenticationManager authenticationManager;
     private final JwtService jwtService;
 
-    public User registerUser(UserRegistrationDto dto) {
+    public UserLoggedDto registerUser(UserRegistrationDto dto) {
         if (userRepository.existsByEmail(dto.getEmail())) {
             throw new AlreadyUsedException("This email is already used");
         }
@@ -39,8 +39,17 @@ public class AuthService {
         user.setPassword(passwordEncoder.encode(dto.getPassword()));
         user.setPhoneNumber(dto.getPhoneNumber());
         user.setRole(ERole.ROLE_USER);
+        userRepository.save(user);
+        Authentication authentication = authenticationManager.authenticate(
+                new UsernamePasswordAuthenticationToken(dto.getUsername(), dto.getPassword())
+        );
 
-        return userRepository.save(user);
+        String token = jwtService.generateToken(authentication);
+
+        return UserLoggedDto.builder()
+                .token(token)
+                .user(UserDto.from(user))
+                .build();
     }
 
     public UserLoggedDto loginUser(UserLoginDto dto) {
