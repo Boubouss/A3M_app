@@ -4,6 +4,7 @@ import com.A3M.user.model.Chaperone;
 import com.A3M.user.model.Coach;
 import com.A3M.user.model.Judoka;
 import com.A3M.user.model.User;
+import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 
 import java.util.Set;
@@ -18,7 +19,7 @@ public class UserDto {
     private Set<Chaperone> chaperones;
     private Coach coach;
 
-    public static UserDto from(User user) {
+    public static UserDto from(@NotNull User user) {
         UserDto userDto = new UserDto();
         userDto.setId(user.getId());
         userDto.setUsername(user.getUsername());
