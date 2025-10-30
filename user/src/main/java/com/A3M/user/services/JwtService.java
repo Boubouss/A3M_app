@@ -1,10 +1,15 @@
 package com.A3M.user.services;
 
+import com.A3M.user.dto.user.response.UserDto;
+import com.A3M.user.exception.type.UserNotFoundException;
 import com.A3M.user.model.User;
+import com.A3M.user.repository.UserRepository;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.security.Keys;
+import jakarta.transaction.Transactional;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
@@ -13,12 +18,22 @@ import java.security.Key;
 import java.util.Date;
 
 @Service
+@RequiredArgsConstructor
 public class JwtService {
     @Value("${jwt.secret}")
     private String jwtSecret;
 
     @Value("${jwt.expiration}")
     private int jwtExpirationMs;
+
+    private final UserRepository userRepository;
+
+
+    @Transactional
+    public User getUserFromToken(String token) {
+        Long id = getUserIdFromToken(token);
+        return userRepository.findById(id).orElseThrow(() -> new UserNotFoundException("User not found"));
+    }
 
     public String generateToken(Authentication authentication) {
         User user = (User) authentication.getPrincipal();

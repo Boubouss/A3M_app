@@ -13,7 +13,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -24,7 +23,7 @@ public class UserService {
 
     private final PasswordEncoder passwordEncoder;
 
-
+    @Transactional
     public List<UserDto> getAllUsers() {
         List<UserDto> response = new ArrayList<>();
         Iterable<User> users = repository.findAll();
@@ -70,6 +69,7 @@ public class UserService {
         return UserDto.from(userUpdated);
     }
 
+    @Transactional
     public void deleteUser(Long id) {
         repository.deleteById(id);
     }

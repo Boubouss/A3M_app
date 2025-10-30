@@ -1,18 +1,19 @@
 package com.A3M.user.model;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
+
 import java.time.LocalDate;
 import com.A3M.user.enums.EBelt;
 
 @Entity
-@Table(name = "judoka")
+@Table(name = "athlete")
 @Data
+@Builder(toBuilder = true)
 @NoArgsConstructor
 @AllArgsConstructor
-public class Judoka {
+@EqualsAndHashCode(exclude = {"user"})
+public class Athlete {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -32,9 +33,8 @@ public class Judoka {
     @Column(unique = true)
     private Long licenseId;
 
-    @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
-    private EBelt beltLevel;
+    @Column(unique = true)
+    private Long athleteDetailsId;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", nullable = false)

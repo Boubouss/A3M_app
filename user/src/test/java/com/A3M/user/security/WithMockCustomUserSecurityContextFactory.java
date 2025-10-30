@@ -1,7 +1,10 @@
 package com.A3M.user.security;
 
 import com.A3M.user.enums.ERole;
+import com.A3M.user.exception.type.UserNotFoundException;
 import com.A3M.user.model.User;
+import com.A3M.user.repository.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
@@ -14,6 +17,9 @@ import java.util.List;
 
 public class WithMockCustomUserSecurityContextFactory
         implements WithSecurityContextFactory<WithMockCustomUser> {
+
+    @Autowired
+    private UserRepository userRepository;
 
     @Override
     public SecurityContext createSecurityContext(WithMockCustomUser annotation) {

