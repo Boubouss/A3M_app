@@ -2,6 +2,7 @@ package com.A3M.user.services;
 
 import com.A3M.user.dto.user.request.UserLoginDto;
 import com.A3M.user.dto.user.request.UserRegistrationDto;
+import com.A3M.user.dto.user.request.UserTokenDto;
 import com.A3M.user.dto.user.response.UserDto;
 import com.A3M.user.dto.user.response.UserLoggedDto;
 import com.A3M.user.enums.ERole;
@@ -9,12 +10,14 @@ import com.A3M.user.exception.type.AlreadyUsedException;
 import com.A3M.user.model.User;
 import com.A3M.user.repository.UserRepository;
 import jakarta.transaction.Transactional;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestBody;
 
 @Service
 @RequiredArgsConstructor
@@ -25,6 +28,7 @@ public class AuthService {
     private final AuthenticationManager authenticationManager;
     private final JwtService jwtService;
 
+    @Transactional
     public UserLoggedDto registerUser(UserRegistrationDto dto) {
         if (userRepository.existsByEmail(dto.getEmail())) {
             throw new AlreadyUsedException("This email is already used");
@@ -54,6 +58,7 @@ public class AuthService {
                 .build();
     }
 
+    @Transactional
     public UserLoggedDto loginUser(UserLoginDto dto) {
         Authentication authentication = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(dto.getUsername(), dto.getPassword())

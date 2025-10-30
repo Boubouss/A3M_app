@@ -1,0 +1,22 @@
+server:
+  port: 8081
+
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/a3m_event_db
+    username: a3m_app
+    password: a3madmin
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+  kafka:
+    bootstrap-servers: localhost:9092
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+
+jwt:
+  secret: k7Xp2s5v8yzB3E5HgMbQeThWmZq4t7w2z4C3FxJaNdRgUkXp2r4u7xlAmDdG5KbPeShVmYq3s6v9y0BfE1HmMcQfTjWnZr4u7x7AtF
+  expiration: 86400000

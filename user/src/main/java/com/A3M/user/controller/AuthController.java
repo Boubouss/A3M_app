@@ -2,8 +2,11 @@ package com.A3M.user.controller;
 
 import com.A3M.user.dto.user.request.UserLoginDto;
 import com.A3M.user.dto.user.request.UserRegistrationDto;
+import com.A3M.user.dto.user.request.UserTokenDto;
+import com.A3M.user.dto.user.response.UserDto;
 import com.A3M.user.dto.user.response.UserLoggedDto;
 import com.A3M.user.services.AuthService;
+import com.A3M.user.services.JwtService;
 import jakarta.annotation.Resource;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
@@ -15,6 +18,9 @@ public class AuthController {
     @Resource
     private AuthService authService;
 
+    @Resource
+    private JwtService jwtService;
+
     @PostMapping("/register")
     public ResponseEntity<UserLoggedDto> register(@Valid @RequestBody UserRegistrationDto dto) {
         return ResponseEntity.ok(authService.registerUser(dto));
@@ -23,5 +29,10 @@ public class AuthController {
     @PostMapping("/login")
     public ResponseEntity<UserLoggedDto> login(@Valid @RequestBody UserLoginDto dto) {
         return ResponseEntity.ok(authService.loginUser(dto));
+    }
+
+    @PostMapping("/validate")
+    public ResponseEntity<UserDto> auth(@Valid @RequestBody UserTokenDto dto) {
+        return ResponseEntity.ok(UserDto.from(jwtService.getUserFromToken(dto.getToken())));
     }
 }
