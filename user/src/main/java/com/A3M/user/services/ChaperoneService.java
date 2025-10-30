@@ -1,13 +1,10 @@
 package com.A3M.user.services;
 
-import com.A3M.user.dto.athlete.request.AthleteSearchNameDto;
-import com.A3M.user.dto.athlete.response.AthleteDto;
 import com.A3M.user.dto.chaperone.request.ChaperoneCreationDto;
 import com.A3M.user.dto.chaperone.request.ChaperoneSearchDto;
 import com.A3M.user.dto.chaperone.request.ChaperoneUpdateDto;
 import com.A3M.user.dto.chaperone.response.ChaperoneDto;
 import com.A3M.user.exception.type.UserNotFoundException;
-import com.A3M.user.model.Athlete;
 import com.A3M.user.model.Chaperone;
 import com.A3M.user.model.User;
 import com.A3M.user.repository.ChaperoneRepository;

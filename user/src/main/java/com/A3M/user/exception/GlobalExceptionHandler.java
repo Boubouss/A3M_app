@@ -51,7 +51,7 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
     };
 
     @ExceptionHandler(AlreadyUsedException.class)
-    public ResponseEntity<ErrorResponse> handleEmailAlreadyUsed(AlreadyUsedException ex, WebRequest request) {
+    public ResponseEntity<ErrorResponse> handleAlreadyUsed(AlreadyUsedException ex, WebRequest request) {
         ErrorResponse errorResponse = ErrorResponse.builder()
                 .status(HttpStatus.CONFLICT.value())
                 .error("Conflict")
